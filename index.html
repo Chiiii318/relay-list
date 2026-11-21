@@ -106,7 +106,7 @@ header{padding-bottom:18px;border-bottom-color:#dedbcf}.wordmark{font-size:19px;
 </head><body><div class="wrap">
 <header><a class="brand" href="#sites"><span class="wordmark">chichi.</span><span class="brand-divider">/</span><span>RELAY LIST</span></a><div class="hright"><span class="headnote">A CONSIDERED DIRECTORY &nbsp; / &nbsp; 2026</span></div></header>
 <div id="vs">
-<section class="hero"><div><div class="kicker">A CURATED AI ROUTING DIRECTORY</div><h1>找到值得用的，<em>不必一个个试。</em></h1><p class="intro">整理 AI 中转站、试吃额度与签到福利。把零散的信息放在一起，让每一次选择都更有依据。</p></div><div class="hero-aside"><strong><span id="heroCount">38</span> <small style="font-size:12px;font-weight:500;color:#747970">SITES</small></strong>持续整理中<br>目录最近核对：2026-11-21</div></section>
+<section class="hero"><div><div class="kicker">A CURATED AI ROUTING DIRECTORY</div><h1>找到值得用的，<em>不必一个个试。</em></h1><p class="intro">整理 AI 中转站、试吃额度与签到福利。把零散的信息放在一起，让每一次选择都更有依据。</p></div><div class="hero-aside"><strong><span id="heroCount">38</span> <small style="font-size:12px;font-weight:500;color:#747970">SITES</small></strong>持续整理中<br>目录最近核对：2026-11-22</div></section>
 <section class="metrics">
 <div class="metric"><div class="num" id="mAll">38</div><div class="label"><span class="dot dark"></span>收录站点</div></div>
 <div class="metric"><div class="num" id="mYes">22</div><div class="label"><span class="dot"></span>有签到</div></div>
@@ -191,7 +191,12 @@ const sites=[
 {name:"哈基米",domain:"gemai.huchan.cn",status:"yes",tags:["试吃 ¥1","充值比例 1:100"],url:"https://gemai.huchan.cn/sign-up?aff=UmLuXEul"},
 {name:"忘忧",domain:"wy.aiwangyou.cc",status:"no",tags:["试吃 ¥1.2","充值比例 1:25"],url:"https://wy.aiwangyou.cc/sign-up?aff=hDkB"},
 {name:"猫薄荷",domain:"pr.nyoru.com",status:"yes",tags:["试吃 ¥0.5","充值比例 1:10"],url:"https://pr.nyoru.com/sign-up?aff=SljA"},
-{name:"少年游",domain:"shaonianyou.xyz",status:"no",tags:["无试吃","充值比例 1:1",{deal:"0.01 元换 2 额度（开站活动）"}],url:"https://shaonianyou.xyz/sign-up?aff=YzcB"}
+{name:"少年游",domain:"shaonianyou.xyz",status:"no",tags:["无试吃","充值比例 1:1",{deal:"0.01 元换 2 额度（开站活动）"}],url:"https://shaonianyou.xyz/sign-up?aff=YzcB"},
+{name:"taicu",domain:"taicu.vip",status:"yes",tags:["试吃 ¥0.25"],url:"https://taicu.vip/sign-up?aff=uwox"},
+{name:"我吃吃吃",domain:"wochichichi.com",status:"yes",label:"有签到 · 有门槛",tags:["签到需充值 ¥50 解锁"],url:"https://wochichichi.com/register?aff=4JPB8ENPQ9RR"},
+{name:"星河",domain:"ai.xingheai.cc",status:"no",tags:["试吃 ¥0.5"],url:"https://ai.xingheai.cc/sign-up?aff=jkOj"},
+{name:"55",domain:"5w5.wtf",status:"no",tags:[],url:"https://5w5.wtf/sign-up?aff=EOQM"},
+{name:"火喵喵",domain:"ai.dianhuomao.shop",status:"yes",label:"有签到 · 有门槛",tags:["签到需昨日调用 >5 次"],url:"https://ai.dianhuomao.shop/sign-up?aff=awWk"}
 ];
 const $=id=>document.getElementById(id),pad=n=>String(n).padStart(2,'0'),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const cardsEl=$('cards'),search=$('search'),empty=$('empty'),clearSearch=$('clearSearch'),buttons=[...document.querySelectorAll('.filter')];
