@@ -115,7 +115,7 @@ header{padding-bottom:18px;border-bottom-color:#dedbcf}.wordmark{font-size:19px;
 
 <div class="notice" role="note" aria-label="反馈说明">
   <span class="notice-icon" aria-hidden="true">i</span>
-  <div><strong>反馈说明：</strong>如发现试吃额度不对、签到或其他福利有误，欢迎加 QQ 群 <strong>1136714003</strong> 指出，我会尽快核对修正。群里只做 API 站子分享和模型检测：新站开站消息第一时间通知，想测的模型也可以点名让我测，还会不定期分发公钥。本站所有站点的试吃额度均已换算成人民币显示，标注了充值比例的站点，试吃金额为按该比例换算后的结果。实际额度及规则请以站点官方页面为准。</div>
+  <div><strong>反馈说明：</strong>如发现试吃额度不对、签到或其他福利有误，欢迎加 QQ 群 <strong>1136714003</strong> 指出，我会尽快核对修正。群里只做 API 站子分享和模型检测：新站开站消息第一时间通知，想测的模型也可以点名让我测，还会不定期分发公钥。本站所有站点的试吃额度均已换算成人民币显示，标注了充值比例的站点，试吃金额为按该比例换算后的结果。注意：我写的试吃额度是总额度，部分站子需要进群领取，部分必须用邀请链接注册才可以，都标注在福利说明里了。实际额度及规则请以站点官方页面为准。</div>
 </div>
 
 <section class="dirhead"><div><div class="dirtitle">站点目录</div><div class="sub">先看福利，再选适合自己的入口。</div></div><div class="result-count" id="resultCount">显示 62 个站点</div></section>
@@ -181,7 +181,7 @@ const sites=[
 {name:"stone",domain:"stoneai.fun",status:"yes",tags:["试吃 ¥1"],url:"https://www.stoneai.fun/sign-up?aff=atSR"},
 {name:"小鸡农场",domain:"aws.ckffai.com",status:"no",tags:["试吃 ¥0.5"],url:"https://aws.ckffai.com/sign-up?aff=esvF"},
 {name:"Nova",domain:"once-cf.novai.su",status:"no",tags:["试吃 33 次调用"],url:"https://once-cf.novai.su/sign-up?aff=X545"},
-{name:"ainzy",domain:"ainzy.net",status:"no",tags:["试吃 ¥0.7","充值比例 7:1"],url:"https://ainzy.net/sign-up?aff=TuvD"},
+{name:"ainzy",domain:"ainzy.net",status:"no",tags:["试吃 ¥0.7","充值比例 7:1"],note:"试吃 ¥0.7 须用邀请链接注册才有，直接注册没有。",url:"https://ainzy.net/sign-up?aff=TuvD"},
 {name:"吾爱",domain:"api.wuai.pet",status:"no",tags:["试吃 ¥0.4","充值比例 1:50"],url:"https://api.wuai.pet/register?aff=ZhZm"},
 {name:"晚晚舟",domain:"wanwanzhou.top",status:"yes",label:"有签到 · 有门槛",tags:["试吃 ¥1","签到需邀请 10 人或充值 20"],url:"https://wanwanzhou.top/register?aff=G6BKNXNNYL5M"},
 {name:"维厄阁",domain:"veilgateapi.org",status:"no",tags:["试吃 ¥1","需进群领取"],note:"试吃 ¥1 需进群领取。",url:"https://veilgateapi.org/sign-up?aff=MLX8"},
@@ -199,7 +199,7 @@ const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
 function countUp(el,to,delay){if(reduce||!to){el.textContent=pad(to);return}el.textContent=pad(0);setTimeout(()=>{const t0=performance.now(),d=900;(function f(t){const k=Math.min(1,(t-t0)/d),e=1-Math.pow(1-k,3);el.textContent=pad(Math.round(to*e));if(k<1)requestAnimationFrame(f)})(t0)},delay)}
 countUp($('heroCount'),sites.length,300);countUp($('mAll'),sites.length,550);countUp($('mYes'),count('yes'),650);countUp($('mNo'),count('no'),750);$('fAll').textContent='全部 '+sites.length;$('fYes').textContent='有签到 '+count('yes');$('fNo').textContent='无签到 '+count('no');
 function trialOf(s){for(const t of s.tags){if(typeof t!=='string')continue;const m=t.match(/^试吃\s*¥?([\d.]+)$/);if(m)return`<span class="trial"><b>¥${m[1]}</b><i>试吃</i></span>`;if(t==='有试吃')return`<span class="trial unk"><b>?</b><i>有试吃</i></span>`}return''}
-cardsEl.innerHTML=sites.map((s,i)=>{const tags=s.tags.filter(t=>typeof t!=='string'||!/^(试吃|有试吃)/.test(t)),tr=trialOf(s);return`<article class="card" style="--i:${i}" data-status="${s.status}" data-q="${esc((s.name+' '+s.domain).toLowerCase())}"><div class="top"><div class="identity"><div class="avatar" >${esc([...s.name][0])}</div><div><div class="name">${esc(s.name)}</div><div class="domain">${esc(s.domain)}</div></div></div><span class="status ${s.status}">${esc(s.label||(s.status==='yes'?'有签到':'无签到'))}</span></div>${tags.length?`<div class="tags">${tags.map(t=>typeof t==='string'?`<span class="tag">${esc(t)}</span>`:`<span class="tag deal">${esc(t.deal)}</span>`).join('')}</div>`:''}<div class="bottom">${tr||(s.note?`<span class="note">${esc(s.note)}</span>`:'<span></span>')}<a class="visit" href="${esc(s.url)}" target="_blank" rel="noopener">立即体验 <b>↗</b></a></div></article>`}).join('');
+cardsEl.innerHTML=sites.map((s,i)=>{const tags=s.tags.filter(t=>typeof t==='string'&&(/^(签到|抽奖)/.test(t)||t.includes('每日抽奖'))),tr=trialOf(s);return`<article class="card" style="--i:${i}" data-status="${s.status}" data-q="${esc((s.name+' '+s.domain).toLowerCase())}"><div class="top"><div class="identity"><div class="avatar" >${esc([...s.name][0])}</div><div><div class="name">${esc(s.name)}</div><div class="domain">${esc(s.domain)}</div></div></div><span class="status ${s.status}">${esc(s.label||(s.status==='yes'?'有签到':'无签到'))}</span></div>${tags.length?`<div class="tags">${tags.map(t=>typeof t==='string'?`<span class="tag">${esc(t)}</span>`:`<span class="tag deal">${esc(t.deal)}</span>`).join('')}</div>`:''}<div class="bottom">${tr||(s.note?`<span class="note">${esc(s.note)}</span>`:'<span></span>')}<a class="visit" href="${esc(s.url)}" target="_blank" rel="noopener">立即体验 <b>↗</b></a></div></article>`}).join('');
 const cards=[...cardsEl.children];let filter='all';
 const sortSelect=$('sort'),resultCount=$('resultCount');
 const FKEY='chichi.favs';let favs=new Set();try{favs=new Set(JSON.parse(localStorage.getItem(FKEY)||'[]'))}catch(e){}
